@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#183e32" />
+  <meta name="description" content="Find thoughtful second-hand deals and give good things a new home on redo." />
+  <meta property="og:title" content="redo — good things, found again" />
+  <meta property="og:description" content="Shop local finds, post your ad, and keep good things moving." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://redo-orcin.vercel.app/" />
+  <link rel="canonical" href="https://redo-orcin.vercel.app/" />
+  <link rel="icon" type="image/svg+xml" href="redo-mark.svg" />
+  <title>redo — Good things, found again</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="redo home"><span class="brand-mark">redo<span class="brand-spark">✳</span></span></a>
+    <button class="location-select" id="locationSelect"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Kerala</span><span class="chevron">⌄</span></button>
+    <div class="searchbar"><input id="searchInput" placeholder="Find cars, mobile phones and more..." aria-label="Search listings"><button id="searchBtn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></button></div>
+    <label class="sr-only" for="languageSelect">Language / ഭാഷ</label><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">EN</option><option value="ml">മലയാളം</option></select>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch appearance">◐</button>
+    <button class="icon-btn chat-shortcut" title="Messages" id="messagesBtn"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.6-.9L4 20l1.3-4.2a7.5 7.5 0 1 1 14.7-4.3Z"/></svg></button>
+    <button class="icon-btn heart-shortcut" title="Favorites" id="favoritesBtn"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 11-8.8 11s-8.8-5.7-8.8-11a4.7 4.7 0 0 1 8.8-2.3 4.7 4.7 0 0 1 8.8 2.3Z"/></svg></button>
+    <button class="login-link" id="loginBtn">Login</button>
+    <button class="sell-button" id="sellBtn"><span>＋</span> SELL</button>
+  </header>
+  <nav class="category-nav"><button class="all-cats">ALL CATEGORIES <span>⌄</span></button><a href="#cars" data-category="Cars">Cars</a><a href="#motorcycles" data-category="Motorcycles">Motorcycles</a><a href="#mobile-phones" data-category="Mobiles">Mobiles</a><a href="#houses" data-category="Property">For sale: Houses &amp; Apartments</a><a href="#electronics" data-category="Electronics">Electronics</a><a href="#furniture" data-category="Furniture">Furniture</a><a href="#jobs" data-category="Jobs">Jobs</a></nav>
+  <main>
+    <section class="welcome-strip"><div><span class="live-dot"></span><b>Good things find a new home.</b><span>A little less waste. A lot more good finds.</span></div><button id="locationPrompt">Set your location <span>→</span></button></section>
+    <section class="hero"><div class="hero-copy"><span class="eyebrow">A MARKETPLACE FOR SECOND CHANCES</span><h1>Good things<br><em>go again.</em></h1><p>Discover pre-loved finds from your community, or pass something good along.</p><button class="hero-cta" id="exploreBtn">Explore listings <span>↗</span></button><div class="hero-trust"><span><b>●</b> Local sellers</span><span><b>●</b> Better prices</span><span><b>●</b> Less waste</span></div></div><div class="hero-art"><div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div><div class="hero-showcase" aria-label="A few good finds"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=82" alt="Second-hand sofa in a bright home"/><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=82" alt="Pre-loved camera ready for a new owner"/><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=82" alt="Books ready to be loved again"/></div><div class="deal-float"><span>JUST LISTED</span><b>Make room<br>for something good.</b><small>Every find has a next chapter ↗</small></div><div class="hero-tag">A better kind of find</div></div></section>
+    <section class="category-section"><div class="section-heading"><div><span class="eyebrow">BROWSE YOUR WAY</span><h2>What are you looking for?</h2></div><button class="text-link" id="allCategoriesBtn">View all categories <span>→</span></button></div><div class="category-grid" id="categoryGrid"></div></section>
+    <section class="feature-banner"><div class="feature-copy"><span class="eyebrow">HAVE SOMETHING TO SELL?</span><h2>One person’s “meh”<br>is another’s <em>must-have.</em></h2><p>Turn the things you don’t need into cash. It takes less than a minute.</p><button class="dark-cta" id="bannerSell">Post your ad <span>↗</span></button></div><div class="feature-photo"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="A well-made writing desk ready for its next home"><div class="sold-stamp">GIVE IT<br>A NEW HOME <span>✳</span></div></div></section>
+    <section class="listings-section" id="latest"><div class="section-heading listing-heading"><div><span class="eyebrow">FRESH FROM YOUR COMMUNITY</span><h2>Fresh finds, just listed</h2></div><div class="listing-controls"><label class="sort-label">Sort by <select id="sortSelect"><option value="newest">Newest first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label><button class="view-toggle active" id="gridView" title="Grid view">▦</button><button class="view-toggle" id="listView" title="List view">☷</button></div></div><div class="filter-row"><button class="filter-chip active" data-filter="all">All listings</button><button class="filter-chip" data-filter="Cars">Cars</button><button class="filter-chip" data-filter="Mobiles">Mobiles</button><button class="filter-chip" data-filter="Property">Property</button><button class="filter-chip" data-filter="Furniture">Home &amp; living</button><button class="filter-more" id="filterMore">＋ More filters</button><button class="filter-more" id="saveSearchBtn">♡ Save search</button><span class="results-count" id="resultsCount"></span></div><div class="listing-grid" id="listingGrid"></div><div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>No finds this time</h3><p>Try another search or category.</p><button id="clearFilters">Clear filters</button></div><button class="load-more" id="loadMore">Show more listings <span>↓</span></button></section>
+    <section class="app-promo"><div class="promo-icon">redo<span>✳</span></div><div><span class="eyebrow">GOOD THINGS, KEPT MOVING</span><h2>Find something lovely.<br>Give it another life.</h2><p>Browse local listings, save your finds, and chat with sellers right here.</p><button class="dark-cta" id="promoExplore">Explore the marketplace <span>↗</span></button></div><div class="phone-mock"><div class="phone-top"></div><div class="phone-brand">redo</div><div class="phone-search"></div><div class="phone-card"></div><div class="phone-card small"></div><div class="phone-tabs">⌂　♡　＋　☻</div></div></section>
+  </main>
+  <footer><div class="footer-top"><div><span class="footer-logo">redo<span class="brand-spark">✳</span></span><p>Making second-hand feel first-class.</p></div><div><b>Explore</b><a href="#latest" data-page="Categories">All categories</a><a href="#latest" data-page="Popular searches">Popular searches</a><a href="#latest" data-page="Nearby listings">Nearby listings</a></div><div><b>About redo</b><a href="#" data-page="About us">About us</a><a href="#" data-page="Careers">Careers</a><a href="#" data-page="Contact">Contact</a></div><div><b>Stay in the loop</b><p>Good finds are better when shared.</p><button class="footer-social" id="socialBtn" aria-label="Share redo with a friend">Made for good finds ↗</button></div></div><div class="footer-bottom"><span>© 2026 redo. Good things, found again.</span><span><a href="#" data-page="Help &amp; support">Help &amp; support</a>　 ·　 <a href="#" data-page="Safety tips">Safety tips</a>　 ·　 <a href="#" data-page="Privacy">Privacy</a>　 ·　 <a href="#" data-page="Terms">Terms</a></span></div></footer>
+  <nav class="mobile-bottom-nav" aria-label="Quick navigation">
+    <button type="button" class="mobile-tab active" id="mobileHome" aria-label="Home" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10.6 9-7.5 9 7.5v9.1a1.3 1.3 0 0 1-1.3 1.3h-5.1v-6.2H9.4V21H4.3A1.3 1.3 0 0 1 3 19.7z"/></svg><span>Home</span></button>
+    <button type="button" class="mobile-tab" id="mobileChats" aria-label="Chats"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.8-.9L4 20l1.4-4.2a8 8 0 1 1 15.1-4.3Z"/></svg><span>Chats</span></button>
+    <button type="button" class="mobile-tab mobile-tab-sell" id="mobileSell" aria-label="Sell"><span class="mobile-sell-orbit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span>Sell</span></button>
+    <button type="button" class="mobile-tab" id="mobileMyAds" aria-label="My ads"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h7"/></svg><span>My Ads</span></button>
+    <button type="button" class="mobile-tab" id="mobileAccount" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20c.4-4.1 3.3-6.5 7.5-6.5s7.1 2.4 7.5 6.5z"/></svg><span>Account</span></button>
+  </nav>
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="redo dialog" tabindex="-1"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
