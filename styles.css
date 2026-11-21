@@ -603,3 +603,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){.login-brand-lockup .redo-wordmark-o{animation:none}}
 :root[data-theme="dark"] .modal-backdrop:has(.welcome-auth-modal){background:radial-gradient(ellipse at 0% 4%,#174bd5 0,transparent 44%),radial-gradient(ellipse at 100% 3%,#ff746e 0,transparent 23%),radial-gradient(ellipse at 0% 100%,#f35d76 0,transparent 21%),linear-gradient(118deg,#10285f 0%,#071c4c 52%,#111d4e 100%)}
 :root[data-theme="dark"] .login-actions .welcome-guest-button{border:1px solid #ff9b8d;background:linear-gradient(105deg,#ff7163,#ff5f62);color:#fff;box-shadow:0 10px 26px #f5575c58}
+
+
+/* Consistent animated recycle mark across redo branding and more legible account actions. */
+.brand-mark,.footer-logo,.promo-icon{display:inline-flex;align-items:center;gap:.015em}
+.brand-recycle{display:inline-flex;width:.78em;height:.78em;vertical-align:middle;color:#ff6b5e;flex:none}
+.brand-recycle .recycle-mark{display:block;width:100%;height:100%;overflow:visible;animation:redo-recycle-spin 5s linear infinite}
+.brand-mark .brand-recycle{color:#82a75c}
+.footer-logo .brand-recycle{color:#82a75c}
+.promo-icon .brand-recycle{color:#7cbd9c}
+.brand-mark{letter-spacing:-.075em}
+.footer-logo{letter-spacing:-.075em}
+.promo-icon{letter-spacing:-.075em}
+.settings-modal{width:min(1000px,calc(100vw - 40px));max-height:min(900px,calc(100dvh - 32px))}
+.settings-layout{min-height:480px}
+.settings-footer{min-height:76px;padding:18px 30px;font-size:13px}
+.settings-footer>div{gap:9px}
+.settings-footer button{padding:11px 14px;font-size:13px}
+@media(max-width:680px){.settings-modal{width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.settings-layout{min-height:0}.settings-footer{gap:10px;padding:15px 17px;font-size:12px}.settings-footer button{padding:10px 11px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.brand-recycle .recycle-mark{animation:none}}
