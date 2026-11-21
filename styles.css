@@ -622,3 +622,48 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .settings-footer button{padding:11px 14px;font-size:13px}
 @media(max-width:680px){.settings-modal{width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.settings-layout{min-height:0}.settings-footer{gap:10px;padding:15px 17px;font-size:12px}.settings-footer button{padding:10px 11px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.brand-recycle .recycle-mark{animation:none}}
+
+
+/* Phone-first hero and baseline-aligned redo wordmark. */
+.brand{display:inline-flex;align-items:center;line-height:1;flex:none}
+.brand-mark,.footer-logo{display:inline-flex;align-items:center;gap:.035em;line-height:1;white-space:nowrap}
+.brand-mark{letter-spacing:-.075em}
+.brand-recycle{display:inline-flex;align-items:center;justify-content:center;position:relative;inset:auto;width:.73em;height:.73em;flex:none;vertical-align:middle}
+.brand-recycle .recycle-mark{display:block;width:100%;height:100%;overflow:visible;transform-origin:50% 50%;animation:redo-recycle-spin 5s linear infinite}
+.promo-icon{display:inline-flex;align-items:center;gap:.035em;letter-spacing:-.075em;line-height:1}
+.promo-icon .brand-recycle{position:static;inset:auto;width:.66em;height:.66em;margin-left:.015em;align-self:center}
+.phone-brand{display:inline-flex;align-items:center;gap:.02em;line-height:1}
+.phone-brand .brand-recycle{width:.72em;height:.72em}
+.footer-logo .brand-recycle{width:.72em;height:.72em}
+@media(max-width:760px){.hero-copy,.hero-art{width:100%}}
+@media(max-width:620px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:0;width:auto;min-height:0;height:auto;margin:12px 12px 52px;border-radius:24px;overflow:hidden}
+  .hero-copy{width:100%;min-width:0;padding:30px 24px 18px}
+  .hero-copy .eyebrow{display:block;width:100%;font-size:8px;letter-spacing:1.15px;line-height:1.55;white-space:normal}
+  .hero h1{font-size:clamp(40px,10.5vw,48px);line-height:1.02;letter-spacing:-2px;margin:15px 0 12px}
+  .hero-copy p{max-width:36ch;font-size:14px;line-height:1.6;margin-bottom:18px}
+  .hero-trust{flex-wrap:wrap;gap:9px 15px;margin-top:17px;font-size:10px}
+  .hero-art{width:100%;height:clamp(260px,72vw,330px);min-height:0;overflow:hidden}
+  .hero-art .hero-showcase{position:absolute;inset:0}
+  .hero-art .hero-showcase img:nth-child(1){width:74%;height:88%;right:0;top:6%;bottom:auto;left:auto;border-radius:30px 0 0 0;transform:none}
+  .hero-art .hero-showcase img:nth-child(2){width:34%;height:38%;left:5%;top:8%;right:auto;bottom:auto;border-radius:15px;transform:rotate(-3deg)}
+  .hero-art .hero-showcase img:nth-child(3){width:31%;height:34%;left:10%;top:auto;right:auto;bottom:8%;border-radius:14px;transform:rotate(2deg)}
+  .hero-orb.orb-a{width:150px;height:150px;right:38%;top:-88px}
+  .hero-orb.orb-b{width:120px;height:120px;right:-42px;top:8px}
+  .deal-float{top:24px;left:12px;max-width:58%;padding:12px 14px;border-radius:14px;transform:rotate(-2deg)}
+  .deal-float b{font-size:15px;line-height:1.15;margin:6px 0}
+  .deal-float small{font-size:8px;line-height:1.35}
+  .hero-tag{right:12px;bottom:13px;padding:8px 11px;font-size:9px}
+}
+@media(max-width:380px){.hero-copy{padding:25px 19px 14px}.hero h1{font-size:40px}.hero-art{height:258px}.deal-float{max-width:62%}}
+@media(prefers-reduced-motion:reduce){.brand-recycle .recycle-mark{animation:none}}
+@media(max-width:620px){
+  .hero{display:flex!important;flex-direction:column!important;gap:0!important;width:calc(100% - 24px)!important;min-height:0!important;height:auto!important;margin:12px 12px 50px!important}
+  .hero-copy{position:relative!important;display:block!important;order:0!important;z-index:2!important;flex:none!important;width:100%!important;min-width:0!important;padding:29px 23px 16px!important}
+  .hero-art{position:relative!important;display:block!important;order:1!important;z-index:1!important;flex:none!important;width:100%!important;height:270px!important;min-height:270px!important;max-height:270px!important}
+  .hero-art .deal-float,.hero-art .hero-tag{display:none!important}
+  .hero-art .hero-showcase{position:absolute!important;inset:0!important}
+  .hero-art .hero-showcase img:nth-child(1){position:absolute!important;width:74%!important;height:88%!important;left:auto!important;right:0!important;top:6%!important;bottom:auto!important;transform:none!important}
+  .hero-art .hero-showcase img:nth-child(2){position:absolute!important;width:34%!important;height:38%!important;left:5%!important;right:auto!important;top:8%!important;bottom:auto!important;transform:rotate(-3deg)!important}
+  .hero-art .hero-showcase img:nth-child(3){position:absolute!important;width:31%!important;height:34%!important;left:10%!important;right:auto!important;top:auto!important;bottom:8%!important;transform:rotate(2deg)!important}
+}
