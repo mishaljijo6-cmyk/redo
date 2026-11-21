@@ -892,3 +892,25 @@ html.motion-on .motion-reveal{will-change:auto}
 @media(prefers-reduced-motion:reduce){.login-recycle-mark{animation:none}}
 .login-bag-art svg.login-recycle-mark{left:9%;top:28%;width:82%;height:82%;max-height:none;display:block;overflow:visible;color:#ff625e;filter:drop-shadow(0 2px 2px #9c342c24)}
 @media(max-width:620px){.modal.welcome-auth-modal .login-glass-card{height:auto;min-height:0}.welcome-auth{min-height:calc(100dvh - 26px)}.login-brand-lockup{gap:10px}.login-bag-art{margin-top:2px}.login-actions{padding-top:14px}}
+
+/* Final modal layout guardrails: keep the first listing step and signed-out card visible. */
+.modal-backdrop:has(.modal.welcome-auth-modal){position:fixed;inset:0;width:100vw;height:100dvh;min-height:100dvh;display:grid;place-items:center;padding:0;overflow:auto;isolation:isolate}
+.modal-backdrop:has(.modal.welcome-auth-modal)>.modal.welcome-auth-modal{position:relative;display:grid;width:100%;height:100dvh;min-height:100dvh;max-height:none;margin:0;padding:20px;place-items:center;overflow:auto;border:0;border-radius:0;background:transparent;box-shadow:none}
+.modal.welcome-auth-modal>.welcome-auth{display:grid;width:100%;height:100%;min-height:0;grid-template-columns:minmax(0,1fr);place-items:center;align-content:center;gap:0;padding:0}
+.modal.welcome-auth-modal .palette-showcase{display:none!important}
+.modal.welcome-auth-modal .welcome-auth-panel{display:grid;width:100%;height:100%;min-height:0;place-items:center;padding:0}
+.modal.welcome-auth-modal .login-glass-card{width:min(460px,calc(100vw - 36px));height:min(720px,calc(100dvh - 56px));min-height:min(480px,calc(100dvh - 56px));margin:auto}
+.modal.ad-post-modal{display:block!important;width:min(980px,calc(100vw - 32px));height:auto;min-height:min(600px,calc(100dvh - 32px));max-height:94dvh;overflow:auto;overscroll-behavior:contain}
+.modal.ad-post-modal>#modalContent{display:block!important;width:100%;min-height:100%}
+.modal.ad-post-modal .ad-post-shell{display:block!important;width:100%;min-height:100%;}
+.modal.ad-post-modal #listingForm{display:block!important;visibility:visible!important;opacity:1!important}
+.modal.ad-post-modal .ad-category-section{display:block!important;visibility:visible!important;opacity:1!important}
+@media(max-width:680px){
+ .modal-backdrop:has(.modal.welcome-auth-modal)>.modal.welcome-auth-modal{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+ .modal.welcome-auth-modal .login-glass-card{width:min(410px,calc(100vw - 24px));height:min(650px,calc(100dvh - 24px));min-height:min(460px,calc(100dvh - 24px));padding:22px 20px}
+ .modal.ad-post-modal{width:100vw;height:100dvh;min-height:100dvh;max-height:100dvh;border-radius:0}
+ .modal.ad-post-modal>#modalContent{min-height:100%}
+ .modal.ad-post-modal .ad-post-shell{min-height:100%;padding-top:max(18px,env(safe-area-inset-top))}
+ .modal.ad-post-modal .ad-category-section{padding-top:16px}
+}
+@media(max-height:620px) and (min-width:681px){.modal.welcome-auth-modal .login-glass-card{height:calc(100dvh - 24px);min-height:0;padding:18px 26px}.modal.welcome-auth-modal .login-brand-lockup{gap:10px}.modal.welcome-auth-modal .login-bag-art{max-height:44%}.modal.welcome-auth-modal .login-actions{padding-top:10px}.modal.welcome-auth-modal .login-actions button{min-height:48px}}
