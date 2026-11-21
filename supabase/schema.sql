@@ -52,6 +52,16 @@ create table if not exists public.private_contact_details (
   updated_at timestamptz not null default now()
 );
 
+-- Upgrade older installs too: CREATE TABLE IF NOT EXISTS does not add columns
+-- to a table created by an earlier version of the schema.
+alter table public.private_contact_details
+  add column if not exists user_id uuid references auth.users(id) on delete cascade,
+  add column if not exists full_name text,
+  add column if not exists phone_number text,
+  add column if not exists updated_at timestamptz not null default now();
+create unique index if not exists private_contact_details_user_id_uidx
+  on public.private_contact_details(user_id);
+
 create table if not exists public.conversation_deal_confirmations (
   conversation_id uuid primary key references public.conversations(id) on delete cascade,
   buyer_confirmed_at timestamptz,
