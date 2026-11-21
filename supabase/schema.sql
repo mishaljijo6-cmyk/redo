@@ -17,13 +17,36 @@ create table if not exists public.listings (
   title text not null check (char_length(title) between 3 and 70),
   category text not null,
   price numeric(12,2) not null default 0 check (price >= 0),
-  description text not null check (char_length(description) between 5 and 2000),
+  description text not null check (char_length(description) between 5 and 4096),
   area text not null,
+  subcategory text,
+  state text,
+  district text,
+  town text,
+  condition text,
+  specs jsonb not null default '{}'::jsonb,
+  photo_urls text[] not null default '{}'::text[],
+  seller_name text,
   photo_url text,
   status text not null default 'active' check (status in ('active','sold','removed')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Upgrade existing installs for the guided ad-posting flow.
+alter table public.listings
+  add column if not exists subcategory text,
+  add column if not exists state text,
+  add column if not exists district text,
+  add column if not exists town text,
+  add column if not exists condition text,
+  add column if not exists specs jsonb not null default '{}'::jsonb,
+  add column if not exists photo_urls text[] not null default '{}'::text[],
+  add column if not exists seller_name text;
+alter table public.listings drop constraint if exists listings_description_check;
+alter table public.listings drop constraint if exists listings_description_length_check;
+alter table public.listings add constraint listings_description_length_check
+  check (char_length(description) between 5 and 4096);
 
 create table if not exists public.favorites (
   user_id uuid not null references auth.users(id) on delete cascade,
