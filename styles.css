@@ -833,7 +833,7 @@ footer .footer-bottom{font-size:11px;line-height:1.7}
 .login-link.has-avatar{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:3px 0}
 .account-avatar{width:28px;height:28px;display:grid;place-items:center;overflow:hidden;flex:none;border:1px solid #dbe6df;border-radius:50%;background:linear-gradient(145deg,#e5f4e7,#d5e5f2);color:#173d32;font-size:11px;font-weight:800}
 .account-avatar img{display:block;width:100%;height:100%;object-fit:cover}
-.login-label{white-space:nowrap}
+.login-label{white-space:nowrap}.login-link.has-avatar .login-label{display:inline-block;max-width:132px;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
 :root[data-theme="dark"] .account-avatar{border-color:#525c66;background:#202a31;color:#edf5f0}
 :root[data-theme="dark"] .theme-toggle svg,:root[data-theme="dark"] .chat-shortcut svg{stroke:currentColor}
 
@@ -914,3 +914,36 @@ html.motion-on .motion-reveal{will-change:auto}
  .modal.ad-post-modal .ad-category-section{padding-top:16px}
 }
 @media(max-height:620px) and (min-width:681px){.modal.welcome-auth-modal .login-glass-card{height:calc(100dvh - 24px);min-height:0;padding:18px 26px}.modal.welcome-auth-modal .login-brand-lockup{gap:10px}.modal.welcome-auth-modal .login-bag-art{max-height:44%}.modal.welcome-auth-modal .login-actions{padding-top:10px}.modal.welcome-auth-modal .login-actions button{min-height:48px}}
+
+/* Keep the seller category picker visible in desktop and mobile browsers. */
+.modal.ad-post-modal .ad-category-section:not(.hidden){display:block!important;visibility:visible!important;opacity:1!important;min-height:0!important}
+.modal.ad-post-modal .ad-category-section:not(.hidden)>.ad-section-title{display:flex!important;visibility:visible!important;opacity:1!important}
+.modal.ad-post-modal .ad-category-section:not(.hidden)>.ad-category-picker{display:grid!important;visibility:visible!important;opacity:1!important;min-height:250px}
+.modal.ad-post-modal .ad-category-list,.modal.ad-post-modal .ad-subcategory-list{display:block!important;visibility:visible!important;opacity:1!important}
+@media(max-width:680px){.modal.ad-post-modal .ad-category-section:not(.hidden)>.ad-category-picker{display:grid!important;min-height:0}}
+@media(max-width:620px){.login-link.has-avatar .login-label{max-width:82px}}
+@media(max-width:380px){.login-link.has-avatar .login-label{max-width:58px}}
+
+/* Fast mobile overlays, visible loading feedback, and a tighter hero image. */
+.inbox-spinner{display:block;width:21px;height:21px;flex:none;border:2px solid color-mix(in srgb,var(--teal,#4d8062) 24%,transparent);border-top-color:var(--teal,#4d8062);border-radius:50%;animation:redo-inbox-spin .7s linear infinite}
+.inbox-loading{min-height:180px;display:flex;align-items:center;justify-content:center;gap:10px}
+@keyframes redo-inbox-spin{to{transform:rotate(360deg)}}
+.chat-history{contain:layout paint;overscroll-behavior:contain}
+@media(max-width:620px){
+  .modal-backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .modal-backdrop:has(.inbox-shell),.modal-backdrop:has(.chat-shell){background:rgba(4,9,7,.76);animation:none}
+  .modal.chat-modal{animation:none}
+  .conversation-card{transition:border-color .12s ease,background-color .12s ease}
+  .chat-loading-deal{min-height:54px;justify-content:flex-start}
+  .chat-history{contain:strict}
+  .hero-art .hero-showcase img:nth-child(1){width:100%;height:100%;left:0;right:0;top:0;bottom:0;border-radius:18px 18px 0 0;transform:none}
+}
+:is(.brand-recycle,.redo-wordmark-o,.login-recycle-mark){color:#82a75c!important}
+@media(max-width:620px){
+  .hero-art .hero-showcase img:nth-child(1){width:100%!important;height:100%!important;left:0!important;right:0!important;top:0!important;bottom:0!important;border-radius:0!important;object-fit:cover!important;object-position:center!important}
+}
+footer .footer-top{font-size:13px}
+footer .footer-top b{font-size:13px}
+footer .footer-top a,footer .footer-top p{font-size:12px;line-height:1.8}
+footer .footer-bottom{font-size:12px;line-height:1.7}
+@media(max-width:620px){footer .footer-top{font-size:12px}footer .footer-top a,footer .footer-top p{font-size:12px}footer .footer-bottom{font-size:11px}}
