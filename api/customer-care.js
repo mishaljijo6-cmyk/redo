@@ -39,13 +39,14 @@ module.exports = async function customerCare(req, res) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 22_000);
   try {
+    const guideTargets = 'search, sell, listingCategories, listingDetails, listingTitle, listingPrice, listingPhotos, listingLocation, listingPublish, chats, account, favorites, myAds, location, theme, language';
     const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
       body: JSON.stringify({
-        systemInstruction: { parts: [{ text: 'You are redo care, the helpful customer-care assistant for redo, a second-hand marketplace in India. Answer clearly, warmly, and briefly in the user’s language. Help with browsing, categories, posting/editing ads, chats, Deal OK, account settings, and practical marketplace safety. Never claim to access a user account, alter a listing, send messages, verify a payment, or complete an action. Give step-by-step directions in the redo site when useful. Do not request passwords, one-time codes, card/bank details, or private phone numbers. For urgent account or safety issues, direct them to the site’s Help & support link. If you do not know, say so.' }] },
+        systemInstruction: { parts: [{ text: `You are redo care, the helpful customer-care assistant for redo, a second-hand marketplace in India. Answer clearly, warmly, and briefly in the user’s language. Help with browsing, categories, posting/editing ads, chats, Deal OK, account settings, and practical marketplace safety. Never claim to access a user account, alter a listing, send messages, verify a payment, or complete an action. Do not request passwords, one-time codes, card/bank details, or private phone numbers. For urgent account or safety issues, direct them to the site’s Help & support link. If you do not know, say so. Always return JSON with exactly these keys: {"reply":"your helpful answer","guide":[{"target":"one allowed target","hint":"short instruction"}]}. Use an empty guide array for general questions that do not require navigating redo. When the user wants to do something in redo, include a short ordered guide of up to 6 steps. Guide targets must be chosen only from this list: ${guideTargets}. Hints should tell the user what to do next, not claim it was done. The visual guide only points and highlights; the user performs every click and confirms every action. Never include code, CSS selectors, JavaScript, URLs, or arbitrary target names in guide steps.` }] },
         contents,
-        generationConfig: { temperature: 0.45, maxOutputTokens: 500 },
+        generationConfig: { temperature: 0.35, maxOutputTokens: 700, responseMimeType: 'application/json' },
       }),
       signal: controller.signal,
     });
@@ -56,9 +57,19 @@ module.exports = async function customerCare(req, res) {
       return res.status(502).json({ error: 'redo care could not reply just now. Please try again.' });
     }
     const data = await response.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('').trim();
+    const output = data?.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('').trim();
+    if (!output) return res.status(502).json({ error: 'redo care could not form a reply just now. Please try again.' });
+    let parsed;
+    try { parsed = JSON.parse(output); } catch { parsed = { reply: output, guide: [] }; }
+    const reply = typeof parsed?.reply === 'string' ? parsed.reply.trim().slice(0, 3000) : '';
+    const allowedTargets = new Set(['search','sell','listingCategories','listingDetails','listingTitle','listingPrice','listingPhotos','listingLocation','listingPublish','chats','account','favorites','myAds','location','theme','language']);
+    const guide = Array.isArray(parsed?.guide) ? parsed.guide.slice(0, 6).flatMap(step => {
+      const target = String(step?.target || '');
+      const hint = typeof step?.hint === 'string' ? step.hint.trim().slice(0, 220) : '';
+      return allowedTargets.has(target) && hint ? [{ target, hint }] : [];
+    }) : [];
     if (!reply) return res.status(502).json({ error: 'redo care could not form a reply just now. Please try again.' });
-    return res.status(200).json({ reply });
+    return res.status(200).json({ reply, guide });
   } catch (error) {
     if (error?.name === 'AbortError') return res.status(504).json({ error: 'That took too long. Please try again.' });
     console.error('Gemini customer-care connection failed');
