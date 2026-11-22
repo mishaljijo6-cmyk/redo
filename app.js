@@ -1,7 +1,6 @@
 /* redo marketplace. Supabase is optional until config.js is filled in. */
 const SUPABASE_URL = window.REDO_SUPABASE_URL || window.OLX_SUPABASE_URL || '';
 const SUPABASE_PUBLISHABLE_KEY = window.REDO_SUPABASE_PUBLISHABLE_KEY || window.OLX_SUPABASE_PUBLISHABLE_KEY || '';
-const GOOGLE_MAPS_API_KEY = window.REDO_GOOGLE_MAPS_API_KEY || '';
 const sbClient = SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY && window.supabase
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
