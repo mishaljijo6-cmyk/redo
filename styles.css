@@ -110,6 +110,7 @@ footer{background:#f5f4ed}.footer-top a:hover,.footer-social:hover{color:#244d3d
 :root[data-theme="dark"] .footer-bottom{border-color:#374a3e}
 :root[data-theme="dark"] .modal{background:#19251e;color:#eff5f0;border:1px solid #405447;box-shadow:0 24px 75px #0009}
 :root[data-theme="dark"] .modal h2,:root[data-theme="dark"] .modal b,:root[data-theme="dark"] .field-label{color:#f1f5f2}
+.location-map-wrap{height:185px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#edf3f0;margin:14px 0 8px}.location-map-wrap iframe{display:block;width:100%;height:100%;border:0}.location-current-button{margin:4px 0!important}.location-current-button:disabled{opacity:.65;cursor:wait}.location-status{min-height:18px;margin:2px 0 8px!important;font-size:11px!important}.map-attribution{display:block;text-align:right;color:var(--muted);font-size:10px;margin-top:8px}.map-attribution a{color:inherit}@media(max-width:620px){.location-map-wrap{height:160px}.modal:has(.location-map-wrap){max-height:calc(100dvh - 24px);overflow-y:auto;padding-bottom:20px}}
 :root[data-theme="dark"] .modal p,:root[data-theme="dark"] .auth-note{color:#c8d5cc!important}
 :root[data-theme="dark"] .modal input,:root[data-theme="dark"] .modal select,:root[data-theme="dark"] .modal textarea,:root[data-theme="dark"] .searchbar input{background:#111a15;color:#f1f5f2;border-color:#506457}
 :root[data-theme="dark"] .modal input::placeholder,:root[data-theme="dark"] .modal textarea::placeholder,:root[data-theme="dark"] .searchbar input::placeholder{color:#adbbb2}
@@ -993,3 +994,11 @@ footer .footer-bottom{font-size:12px;line-height:1.7}
 :root[data-theme="dark"] .redo-guide-card{--surface:#101513;--soft:#1b231e;--text:#f1f5f2;border-color:#34453a;}
 @media(max-width:620px){.care-panel.care-keyboard-open{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));border-radius:18px}.care-panel.care-keyboard-open .care-header{padding:9px 12px}.care-panel.care-keyboard-open .care-avatar{width:34px;height:34px;border-radius:12px}.care-panel.care-keyboard-open .care-messages{padding:8px 11px}.care-panel.care-keyboard-open .care-welcome{padding-top:2px}.care-panel.care-keyboard-open .care-welcome-mark{width:34px;height:34px;margin-bottom:5px}.care-panel.care-keyboard-open .care-welcome>p{margin-bottom:7px;font-size:11px}.care-panel.care-keyboard-open .care-suggestions{gap:5px}.care-panel.care-keyboard-open .care-suggestions button{padding:6px 8px;font-size:10px}.care-panel.care-keyboard-open .care-form{margin-inline:9px;padding:5px;gap:5px}.care-panel.care-keyboard-open .care-form textarea{font-size:16px;line-height:1.35;padding:8px 5px}.care-panel.care-keyboard-open .care-privacy{padding-top:5px;font-size:9px}.redo-guide-card{right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));width:calc(100vw - 20px);padding:13px 14px}.redo-guide-card p{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.redo-guide-pointer{animation:none}.redo-guide-card{animation:none}}
+
+/* Make unread conversations obvious without adding noise to read chats. */
+.conversation-card{grid-template-columns:60px minmax(0,1fr) 10px 16px}
+.conversation-unread-dot{display:none;width:9px;height:9px;border-radius:50%;background:#299b57;box-shadow:0 0 0 3px #299b571a}
+.conversation-card.is-unread .conversation-unread-dot{display:block}
+.conversation-card.is-unread .conversation-title b{font-weight:850}
+:root[data-theme="dark"] .conversation-unread-dot{background:#54d887;box-shadow:0 0 0 3px #54d88722}
+@media(max-width:420px){.conversation-card{grid-template-columns:48px minmax(0,1fr) 9px 14px;gap:9px;padding:9px}.conversation-thumb{width:48px;height:48px}}
