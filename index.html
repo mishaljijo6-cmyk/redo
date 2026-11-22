@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261122-4" />
+  <link rel="stylesheet" href="styles.css?v=20261122-6" />
 </head>
 <body>
   <header class="topbar">
@@ -24,7 +24,7 @@
     <div class="searchbar"><input id="searchInput" placeholder="Find cars, mobile phones and more..." aria-label="Search listings"><button id="searchBtn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></button></div>
     <label class="sr-only" for="languageSelect">Language / ഭാഷ</label><select class="language-select" id="languageSelect" aria-label="Language"><option value="en">EN</option><option value="ml">മലയാളം</option></select>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch appearance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.1A8.7 8.7 0 0 1 8.9 3.6 8.8 8.8 0 1 0 20.4 15.1Z"/></svg></button>
-    <button class="icon-btn chat-shortcut" title="Chats" aria-label="Chats" id="messagesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.6-.9L4 20l1.3-4.2a7.5 7.5 0 1 1 14.7-4.3Z"/></svg><span class="chat-shortcut-label">Chats</span></button>
+    <button class="icon-btn chat-shortcut" title="Chats" aria-label="Chats" id="messagesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.6-.9L4 20l1.3-4.2a7.5 7.5 0 1 1 14.7-4.3Z"/></svg><span class="chat-shortcut-label">Chats</span><span class="chat-unread-label" aria-hidden="true"></span></button>
     <button class="icon-btn heart-shortcut" title="Favorites" id="favoritesBtn"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.3-8.8 11-8.8 11s-8.8-5.7-8.8-11a4.7 4.7 0 0 1 8.8-2.3 4.7 4.7 0 0 1 8.8 2.3Z"/></svg></button>
     <button class="login-link" id="loginBtn">Login</button>
     <button class="sell-button" id="sellBtn"><span>＋</span> SELL</button>
@@ -47,9 +47,17 @@
     <button type="button" class="mobile-tab" id="mobileAccount" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20c.4-4.1 3.3-6.5 7.5-6.5s7.1 2.4 7.5 6.5z"/></svg><span>Account</span></button>
   </nav>
   <div class="toast" id="toast"></div>
+  <section class="care-widget" id="careWidget" aria-label="Customer care assistant">
+    <button type="button" class="care-launcher" id="careLauncher" aria-expanded="false" aria-controls="carePanel" aria-label="Open redo customer care"><span class="care-launcher-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.6-.9L4 20l1.3-4.2a7.5 7.5 0 1 1 14.7-4.3Z"/></svg><i></i></span><span>Help</span></button>
+    <aside class="care-panel hidden" id="carePanel" aria-labelledby="careTitle">
+      <header class="care-header"><span class="care-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-14.9-4L3 8M3 3v5h5M4 13a8.1 8.1 0 0 0 14.9 4L21 16m0 5v-5h-5"/></svg></span><div><b id="careTitle">redo care</b><small><i></i> Here to help, anytime</small></div><button type="button" class="care-close" id="careClose" aria-label="Close customer care">×</button></header>
+      <div class="care-messages" id="careMessages" aria-live="polite"><div class="care-welcome"><span class="care-welcome-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-14.9-4L3 8M3 3v5h5M4 13a8.1 8.1 0 0 0 14.9 4L21 16m0 5v-5h-5"/></svg></span><b>Good things, easier.</b><p>Ask about listings, posting an ad, chats, deals, or staying safe on redo.</p><div class="care-suggestions"><button type="button">How do I post an ad?</button><button type="button">How do chats and Deal OK work?</button><button type="button">How can I stay safe?</button></div></div></div>
+      <form class="care-form" id="careForm"><label class="sr-only" for="careInput">Ask redo care</label><textarea id="careInput" rows="1" maxlength="1200" placeholder="Ask us anything…" required></textarea><button type="submit" aria-label="Send message" id="careSend"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button></form><small class="care-privacy">AI help · Don’t share passwords or payment details</small>
+    </aside>
+  </section>
   <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="redo dialog" tabindex="-1"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2"></script>
   <script src="config.js"></script>
-  <script src="app.js?v=20261122-4"></script>
+  <script src="app.js?v=20261122-6"></script>
 </body>
 </html>
