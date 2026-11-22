@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261122-8" />
+  <link rel="stylesheet" href="styles.css?v=20261122-9" />
 </head>
 <body>
   <header class="topbar">
@@ -55,9 +55,13 @@
       <form class="care-form" id="careForm"><label class="sr-only" for="careInput">Ask redo care</label><textarea id="careInput" rows="1" maxlength="1200" placeholder="Ask us anything…" required></textarea><button type="submit" aria-label="Send message" id="careSend"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button></form><small class="care-privacy">AI help · Don’t share passwords or payment details</small>
     </aside>
   </section>
+  <section id="redoGuide" class="redo-guide hidden" aria-label="redo care step guide" aria-live="polite">
+    <span id="redoGuidePointer" class="redo-guide-pointer" aria-hidden="true"><svg viewBox="0 0 32 40"><path d="M3 2 29 22l-11 2-5 11L3 2Z" fill="currentColor" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg></span>
+    <div class="redo-guide-card"><div class="redo-guide-top"><span class="redo-guide-step" id="redoGuideStep">STEP 1</span><button type="button" id="redoGuideStop" aria-label="End guide">×</button></div><p id="redoGuideHint"></p><div class="redo-guide-actions"><button type="button" id="redoGuideBack">Back</button><button type="button" id="redoGuideNext">Next</button></div></div>
+  </section>
   <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="redo dialog" tabindex="-1"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2"></script>
   <script src="config.js"></script>
-  <script src="app.js?v=20261122-8"></script>
+  <script src="app.js?v=20261122-9"></script>
 </body>
 </html>
