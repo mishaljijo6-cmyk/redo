@@ -1008,3 +1008,4 @@ footer .footer-bottom{font-size:12px;line-height:1.7}
 .conversation-card.is-unread .conversation-title b{font-weight:850}
 :root[data-theme="dark"] .conversation-unread-dot{background:#54d887;box-shadow:0 0 0 3px #54d88722}
 @media(max-width:420px){.conversation-card{grid-template-columns:48px minmax(0,1fr) 9px 14px;gap:9px;padding:9px}.conversation-thumb{width:48px;height:48px}}
+:root[data-theme="dark"] .radius-control{background:#17251c;border-color:#405348}:root[data-theme="dark"] .radius-heading .field-label{color:#eef5ef}:root[data-theme="dark"] .radius-heading output{background:#2a4432;color:#d7f0dc}:root[data-theme="dark"] .radius-scale{color:#c2d0c7}
